@@ -1,7 +1,10 @@
 package lesson9.labs.prob11a;
 
 import java.util.*;
-import lesson9.labs.prob11b.LambdaLibrary;
+import java.util.stream.Collectors;
+
+//import lesson9.labs.prob11b.LambdaLibrary;
+
 
 
 public class Main {
@@ -17,7 +20,14 @@ public class Main {
 				new Employee("Donald", "Trump", 100000));
 
 
-		System.out.println(LambdaLibrary.filtered.apply(emps, 'm', 'z'));
+		System.out.println(emps.stream().filter(e->e.getSalary()> 100000)
+				.filter(e->Character.toUpperCase(e.getLastName().charAt(0)) >=Character.toUpperCase('M') 
+				&& Character.toUpperCase(e.getLastName().charAt(0)) <=Character.toUpperCase('Z'))
+				.sorted(Comparator.comparing(Employee::getFirstName))
+				.map(e->e.getFirstName()+" "+e.getLastName())
+				.collect(Collectors.toList()));
+		
+		//System.out.println(LambdaLibrary.filtered.apply(emps, 10000, 'z'));
 	}
 
 

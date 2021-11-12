@@ -9,12 +9,11 @@ import lesson9.labs.prob11a.TriFunction;
 
 public class LambdaLibrary {
 	
-	public static final TriFunction<List<Employee>, Character, Character, List<String>> filtered = (emps,M,Z)->emps.stream()
-			.filter(e->e.getSalary()> 100000)
-			.filter(e->Character.toUpperCase(e.getLastName().charAt(0)) >=Character.toUpperCase(M) 
-			&& Character.toUpperCase(e.getLastName().charAt(0)) <=Character.toUpperCase(Z))
+	public static final TriFunction<List<Employee>, Integer, Character, String> filtered = (list,x,m)->list.stream()
+			.filter(e->e.getSalary()> x)
+			.filter(e->Character.toUpperCase(e.getLastName().charAt(0)) >=Character.toUpperCase(m)) 
 			.sorted(Comparator.comparing(Employee::getFirstName))
 			.map(e->e.getFirstName()+" "+e.getLastName())
-			.collect(Collectors.toList());
+			.collect(Collectors.joining(", "));
 
 }
