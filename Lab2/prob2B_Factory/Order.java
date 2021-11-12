@@ -1,4 +1,4 @@
-package Lab2.prob2B;
+package Lab2.prob2B_Factory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +24,19 @@ private int orderNum;
 	}
 	
 	
-	public void addOrderLine(String name) {
-		
-		OrderLine ord = new OrderLine(this, name);
-		orderline.add(ord);
+	
+	
+//	public void addOrderLine(String name) {
+//		
+//		OrderLine ord = new OrderLine(this, name);
+//		orderline.add(ord);
+//	}
+	
+	
+	public void setOrderline(List<OrderLine> orderline) {
+		this.orderline = orderline;
 	}
-	
-	
+
 	public void removeOrderLine(String name) {
 		
 		
